@@ -22,44 +22,65 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (email, password) => {
-        // Simulated API call
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                if (password.length < 4) {
-                    reject(new Error("Password too short"));
-                    return;
+                try {
+                    const users = JSON.parse(localStorage.getItem('clearlayer_users') || '[]');
+                    const foundUser = users.find(u => u.email === email && u.password === password);
+
+                    if (foundUser) {
+                        const { password: _, ...userData } = foundUser;
+                        setUser(userData);
+                        localStorage.setItem('clearlayer_user', JSON.stringify(userData));
+                        resolve(userData);
+                    } else {
+                        reject(new Error("Invalid credentials"));
+                    }
+                } catch (e) {
+                    reject(new Error("Authentication failed"));
                 }
-                const userData = {
-                    email,
-                    name: email.split('@')[0],
-                    id: 'usr_' + Math.random().toString(36).substr(2, 9),
-                    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`
-                };
-                setUser(userData);
-                localStorage.setItem('clearlayer_user', JSON.stringify(userData));
-                resolve(userData);
-            }, 1500);
+            }, 1000);
         });
     };
 
     const signup = async (email, password) => {
-        // Simulated API call
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                if (!email.includes('@')) {
-                    reject(new Error("Invalid email format"));
-                    return;
+                try {
+                    if (!email.includes('@')) {
+                        reject(new Error("Invalid email format"));
+                        return;
+                    }
+                    if (password.length < 6) {
+                        reject(new Error("Password must be at least 6 characters"));
+                        return;
+                    }
+
+                    const users = JSON.parse(localStorage.getItem('clearlayer_users') || '[]');
+                    if (users.some(u => u.email === email)) {
+                        reject(new Error("User already exists"));
+                        return;
+                    }
+
+                    const userData = {
+                        email,
+                        password, // Storing password in plain text as requested by "localStorage logic" for a simple bypass/mock
+                        name: email.split('@')[0],
+                        id: 'usr_' + Date.now().toString(36),
+                        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`
+                    };
+
+                    users.push(userData);
+                    localStorage.setItem('clearlayer_users', JSON.stringify(users));
+
+                    const { password: _, ...userSession } = userData;
+                    setUser(userSession);
+                    localStorage.setItem('clearlayer_user', JSON.stringify(userSession));
+                    resolve(userSession);
+                } catch (e) {
+                    reject(new Error("Signup failed"));
                 }
-                const userData = {
-                    email,
-                    name: email.split('@')[0],
-                    id: 'usr_' + Date.now().toString(36),
-                    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`
-                };
-                setUser(userData);
-                localStorage.setItem('clearlayer_user', JSON.stringify(userData));
-                resolve(userData);
-            }, 1500);
+            }, 1000);
         });
     };
 

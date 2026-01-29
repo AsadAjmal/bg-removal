@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Zap, Sparkles, Wand2, Download, Layers, MousePointer2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Landing = () => {
     return (
-        <div style={{ paddingTop: '160px', overflowX: 'hidden' }}>
+        <div className="section-padding" style={{ overflowX: 'hidden' }}>
             {/* Background Ornaments */}
             <div className="bg-blob" style={{ top: '5%', right: '10%', width: '800px', height: '800px', background: 'radial-gradient(circle, rgba(129, 140, 248, 0.2) 0%, transparent 70%)' }}></div>
             <div className="bg-blob" style={{ bottom: '20%', left: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(192, 132, 252, 0.15) 0%, transparent 70%)' }}></div>
@@ -58,7 +58,7 @@ const Landing = () => {
                         Powered by next-gen AI that understands hair, transparency, and complex edges.
                     </p>
 
-                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem', marginBottom: '5rem' }}>
+                    <div className="hero-buttons" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem', marginBottom: '5rem' }}>
                         <Link to="/signup" className="btn-primary" style={{ padding: '1.2rem 2.5rem', fontSize: '1.15rem' }}>
                             Remove Background Now
                         </Link>
@@ -82,7 +82,7 @@ const Landing = () => {
                         boxShadow: '0 50px 100px -20px rgba(0,0,0,0.7), 0 0 0 1px var(--border-glass)'
                     }}
                 >
-                    <div style={{ height: '600px', display: 'flex', background: '#0a0c10' }}>
+                    <div className="slider-container" style={{ display: 'flex', background: '#0a0c10' }}>
                         <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
                             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1528&auto=format&fit=crop" style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Portrait model" />
                             <div style={{ position: 'absolute', top: '2rem', left: '2rem', background: 'rgba(0,0,0,0.6)', padding: '0.6rem 1.2rem', borderRadius: '12px', fontSize: '0.9rem', fontWeight: 600, backdropFilter: 'blur(10px)' }}>Before</div>

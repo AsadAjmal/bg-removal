@@ -27,7 +27,8 @@ const Auth = () => {
             }
             navigate('/dashboard');
         } catch (err) {
-            setError('Invalid credentials or network error. Please try again.');
+            console.error(err);
+            setError(err.message || 'Invalid credentials or network error. Please try again.');
         } finally {
             setLoading(false);
         }
@@ -78,11 +79,11 @@ const Auth = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="glass-heavy"
+                    className="glass-heavy mobile-p-0"
                     style={{ width: '100%', maxWidth: '480px', padding: '3.5rem', borderRadius: '32px', zIndex: 1 }}
                 >
-                    <div style={{ marginBottom: '2.5rem' }}>
-                        <h2 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '0.75rem', letterSpacing: '-1px' }}>
+                    <div className="mobile-text-center" style={{ marginBottom: '2.5rem' }}>
+                        <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.2rem)', fontWeight: 800, marginBottom: '0.75rem', letterSpacing: '-1px' }}>
                             {isLogin ? 'Welcome Back' : 'Get Started'}
                         </h2>
                         <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>

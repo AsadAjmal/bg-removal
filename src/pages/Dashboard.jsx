@@ -1,4 +1,4 @@
-// import removeBackground from '@imgly/background-removal';
+import { removeBackground } from '@imgly/background-removal';
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -24,9 +24,9 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (!user) navigate('/login');
-    }, [user]);
+    }, [user, navigate]);
 
-    const handleFileUpload = (e) => {
+    const handleFileUpload = async (e) => {
         const file = e.target.files?.[0];
         if (file) {
             if (file.size > 10 * 1024 * 1024) {
@@ -37,11 +37,16 @@ const Dashboard = () => {
             setSourceImage(url);
             setRemovedImage(null);
             setBgType('transparent');
+
+            // Auto-start processing
+            setTimeout(() => {
+                processImage(url);
+            }, 100);
         }
     };
 
-    const processImage = async () => {
-        if (!sourceImage) return;
+    const processImage = async (imgToProcess = sourceImage) => {
+        if (!imgToProcess) return;
         setIsProcessing(true);
         setProgress(0);
 
@@ -59,7 +64,7 @@ const Dashboard = () => {
             };
 
             // Perform the removal
-            const blob = await removeBackground(sourceImage, config);
+            const blob = await removeBackground(imgToProcess, config);
 
             if (!blob) {
                 throw new Error("AI returned no data");
@@ -68,6 +73,7 @@ const Dashboard = () => {
             const url = URL.createObjectURL(blob);
             setRemovedImage(url);
             console.log("Image processed successfully!");
+            // No alert needed for success if UI updates clearly, but a transition is nice
         } catch (error) {
             console.error("AI Processing Error:", error);
 
@@ -139,9 +145,8 @@ const Dashboard = () => {
 
                     {/* Main Workspace */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                        <div className="glass-heavy" style={{
+                        <div className="glass-heavy slider-container" style={{
                             borderRadius: '24px',
-                            minHeight: '600px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -159,6 +164,11 @@ const Dashboard = () => {
                                 backgroundSize: '20px 20px',
                                 zIndex: 0
                             }}></div>
+
+                            <div style={{ position: 'absolute', top: '1.5rem', left: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(0,0,0,0.5)', padding: '0.5rem 1rem', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 600, border: '1px solid var(--border-glass)', zIndex: 10 }}>
+                                <div style={{ width: '8px', height: '8px', background: isProcessing ? '#fbbf24' : '#10b981', borderRadius: '50%', boxShadow: isProcessing ? '0 0 10px #fbbf24' : '0 0 10px #10b981' }}></div>
+                                {isProcessing ? 'AI Processing...' : 'AI Ready'}
+                            </div>
 
                             {!sourceImage ? (
                                 <motion.div
@@ -259,7 +269,7 @@ const Dashboard = () => {
                             )}
                         </div>
 
-                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
                             <button
                                 className="btn-secondary"
                                 onClick={() => { setSourceImage(null); setRemovedImage(null); setBgType('transparent'); }}
