@@ -139,7 +139,12 @@ const Dashboard = () => {
     };
 
     return (
-        <div style={{ paddingTop: '130px', paddingBottom: '50px' }}>
+        <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            style={{ paddingTop: '130px', paddingBottom: '50px' }}
+        >
             <div className="container">
                 <div className="dashboard-grid">
 
@@ -405,7 +410,7 @@ const Dashboard = () => {
 
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

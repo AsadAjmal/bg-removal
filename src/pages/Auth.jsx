@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { Mail, Lock, User, ArrowRight, Github, Chrome, Zap } from 'lucide-react';
+import { Mail, Lock, User, ArrowRight, Github, Chrome, Zap, Loader2 } from 'lucide-react';
 
 const Auth = () => {
     const isLogin = useLocation().pathname === '/login';
@@ -11,8 +11,14 @@ const Auth = () => {
     const [name, setName] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const { login, signup } = useAuth();
     const navigate = useNavigate();
+    const { user, login, signup } = useAuth();
+
+    useEffect(() => {
+        if (user) {
+            navigate('/dashboard', { replace: true });
+        }
+    }, [user, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -203,10 +209,10 @@ const Auth = () => {
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                        <button className="btn-secondary" style={{ padding: '0.8rem' }}>
+                        <button type="button" className="btn-secondary" style={{ padding: '0.8rem' }}>
                             <Chrome size={20} />
                         </button>
-                        <button className="btn-secondary" style={{ padding: '0.8rem' }}>
+                        <button type="button" className="btn-secondary" style={{ padding: '0.8rem' }}>
                             <Github size={20} />
                         </button>
                     </div>

@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar-container glass-heavy">
-            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'inherit' }}>
+            <Link to={user ? "/dashboard" : "/"} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'inherit' }}>
                 <div style={{
                     background: 'var(--gradient-main)',
                     padding: '10px',
