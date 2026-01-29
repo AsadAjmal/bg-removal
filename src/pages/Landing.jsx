@@ -36,11 +36,11 @@ const Landing = () => {
                     </div>
 
                     <h1 style={{
-                        fontSize: 'clamp(3rem, 10vw, 5.5rem)',
+                        fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
                         fontWeight: 800,
-                        lineHeight: 0.95,
-                        marginBottom: '2rem',
-                        letterSpacing: '-2.5px'
+                        lineHeight: 1.1,
+                        marginBottom: '1.5rem',
+                        letterSpacing: '-2px'
                     }}>
                         Stunning Images <br />
                         <span className="gradient-text">Without Backgrounds</span>
@@ -58,11 +58,11 @@ const Landing = () => {
                         Powered by next-gen AI that understands hair, transparency, and complex edges.
                     </p>
 
-                    <div className="hero-buttons" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem', marginBottom: '5rem' }}>
-                        <Link to="/signup" className="btn-primary" style={{ padding: '1.2rem 2.5rem', fontSize: '1.15rem' }}>
+                    <div className="hero-buttons" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem', marginBottom: '4rem' }}>
+                        <Link to="/signup" className="btn-primary" style={{ padding: 'clamp(0.8rem, 3vw, 1.2rem) 2.5rem', fontSize: 'clamp(1rem, 2vw, 1.15rem)', width: 'auto' }}>
                             Remove Background Now
                         </Link>
-                        <Link to="/login" className="btn-secondary" style={{ padding: '1.2rem 2.5rem', fontSize: '1.15rem' }}>
+                        <Link to="/login" className="btn-secondary" style={{ padding: 'clamp(0.8rem, 3vw, 1.2rem) 2.5rem', fontSize: 'clamp(1rem, 2vw, 1.15rem)', width: 'auto' }}>
                             View Showcase
                         </Link>
                     </div>
@@ -139,8 +139,8 @@ const Landing = () => {
                         <p style={{ color: 'var(--text-muted)', fontWeight: 500 }}>Processed Photos</p>
                     </div>
                     <div>
-                        <h4 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem' }} className="gradient-text">4.9/5</h4>
-                        <p style={{ color: 'var(--text-muted)', fontWeight: 500 }}>User Satisfaction</p>
+                        <h4 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 800, marginBottom: '0.5rem' }} className="gradient-text">4.9/5</h4>
+                        <p style={{ color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.9rem' }}>User Satisfaction</p>
                     </div>
                 </div>
             </section>
@@ -148,9 +148,9 @@ const Landing = () => {
             {/* Features Detail */}
             <section style={{ padding: '6rem 0 100px' }}>
                 <div className="container">
-                    <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-                        <h2 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-1.5px' }}>Powerful features for everyone</h2>
-                        <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>From pro photographers to social media enthusiasts.</p>
+                    <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 5vw, 5rem)' }}>
+                        <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-1.5px' }}>Powerful features for everyone</h2>
+                        <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(1rem, 2vw, 1.2rem)' }}>From pro photographers to social media enthusiasts.</p>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>

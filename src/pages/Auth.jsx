@@ -57,7 +57,7 @@ const Auth = () => {
                 padding: '5rem',
                 position: 'relative',
                 overflow: 'hidden'
-            }} className="nav-labels">
+            }} className="nav-labels hide-on-mobile">
                 <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100%', height: '100%', background: 'rgba(255,255,255,0.05)', borderRadius: '50%' }}></div>
                 <motion.div
                     initial={{ opacity: 0, x: -30 }}
@@ -79,14 +79,14 @@ const Auth = () => {
             </div>
 
             {/* Main Form Area */}
-            <div style={{ flex: 1.2, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', position: 'relative' }}>
+            <div style={{ flex: 1.2, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', position: 'relative', width: '100%' }}>
                 <div className="bg-blob" style={{ top: '20%', right: '10%', width: '500px', height: '500px', opacity: 0.1 }}></div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="glass-heavy mobile-p-0"
-                    style={{ width: '100%', maxWidth: '480px', padding: '3.5rem', borderRadius: '32px', zIndex: 1 }}
+                    style={{ width: '100%', maxWidth: '440px', padding: 'clamp(1.5rem, 5vw, 3.5rem)', borderRadius: '24px', zIndex: 1 }}
                 >
                     <div className="mobile-text-center" style={{ marginBottom: '2.5rem' }}>
                         <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.2rem)', fontWeight: 800, marginBottom: '0.75rem', letterSpacing: '-1px' }}>
