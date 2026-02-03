@@ -145,7 +145,7 @@ body {
   }
 
   .section-padding {
-    padding-top: 100px !important;
+    padding-top: 20px !important;
   }
 
   .mobile-stack {
@@ -159,6 +159,18 @@ body {
   .mobile-text-center {
     text-align: center !important;
   }
+}
+
+.section-padding {
+  padding-top: 20px;
+}
+
+.bg-blob {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
 }
 
 /* Layout Components */

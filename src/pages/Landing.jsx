@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 
 const Landing = () => {
     return (
-        <div className="section-padding" style={{ overflowX: 'hidden' }}>
+        <div className="section-padding" style={{ overflowX: 'hidden', position: 'relative' }}>
+
             {/* Background Ornaments */}
-            <div className="bg-blob" style={{ top: '5%', right: '10%', width: '800px', height: '800px', background: 'radial-gradient(circle, rgba(129, 140, 248, 0.2) 0%, transparent 70%)' }}></div>
-            <div className="bg-blob" style={{ bottom: '20%', left: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(192, 132, 252, 0.15) 0%, transparent 70%)' }}></div>
+            <div className="bg-blob" style={{ position: 'absolute', zIndex: -1, pointerEvents: 'none', top: '2%', right: '10%', width: '800px', height: '800px', background: 'radial-gradient(circle, rgba(129, 140, 248, 0.2) 0%, transparent 70%)' }}></div>
+            <div className="bg-blob" style={{ position: 'absolute', zIndex: -1, pointerEvents: 'none', bottom: '20%', left: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(192, 132, 252, 0.15) 0%, transparent 70%)' }}></div>
 
             {/* Hero Section */}
             <section className="container" style={{ textAlign: 'center', position: 'relative' }}>
@@ -28,7 +29,7 @@ const Landing = () => {
                         color: 'var(--primary)',
                         fontSize: '0.9rem',
                         fontWeight: 600,
-                        marginBottom: '2.5rem',
+                        marginBottom: '0.75rem',
                         backdropFilter: 'blur(10px)'
                     }}>
                         <Sparkles size={16} fill="var(--primary)" />
@@ -39,7 +40,7 @@ const Landing = () => {
                         fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
                         fontWeight: 800,
                         lineHeight: 1.1,
-                        marginBottom: '1.5rem',
+                        marginBottom: '0.75rem',
                         letterSpacing: '-2px'
                     }}>
                         Stunning Images <br />
@@ -50,7 +51,7 @@ const Landing = () => {
                         fontSize: 'clamp(1.1rem, 3vw, 1.4rem)',
                         color: 'var(--text-muted)',
                         maxWidth: '800px',
-                        margin: '0 auto 3rem',
+                        margin: '0 auto 1.5rem',
                         lineHeight: 1.5,
                         fontWeight: 400
                     }}>
@@ -58,7 +59,7 @@ const Landing = () => {
                         Powered by next-gen AI that understands hair, transparency, and complex edges.
                     </p>
 
-                    <div className="hero-buttons" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem', marginBottom: '4rem' }}>
+                    <div className="hero-buttons" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
                         <Link to="/signup" className="btn-primary" style={{ padding: 'clamp(0.8rem, 3vw, 1.2rem) 2.5rem', fontSize: 'clamp(1rem, 2vw, 1.15rem)', width: 'auto' }}>
                             Remove Background Now
                         </Link>
