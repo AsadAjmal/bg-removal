@@ -12,7 +12,7 @@ const Landing = () => {
             <div className="bg-blob" style={{ position: 'absolute', zIndex: -1, pointerEvents: 'none', bottom: '20%', left: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(192, 132, 252, 0.15) 0%, transparent 70%)' }}></div>
 
             {/* Hero Section */}
-            <section className="container" style={{ textAlign: 'center', position: 'relative' }}>
+            <section className="container" style={{ textAlign: 'center', position: 'relative', }}>
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
